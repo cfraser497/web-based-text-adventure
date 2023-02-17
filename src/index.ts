@@ -1,5 +1,5 @@
 import "./styles.css";
-import { main } from "./textAdventure/app";
+import { main } from "./frontend/app";
 
 main();
 
