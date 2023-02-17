@@ -1,5 +1,3 @@
-import { FileHandler } from "./FileHandler"
-
 class WebPage {
     readonly headerText;
     readonly button1;
@@ -16,7 +14,7 @@ class WebPage {
             this.button1.classList.add("btn");
             this.button2.classList.add("btn");
         
-            this.headerText.textContent = "actually i changed my mind";
+            this.headerText.textContent = "hi sophie";
         
             this.button1.textContent = "this is button 1";
             this.button2.textContent = "this is not button 1";
@@ -34,10 +32,7 @@ class GameHandler {
     }
 
     mainEventLoop(): void {
-       var fileHandler: FileHandler = new FileHandler("../../../Chapters/test.txt");
-        if (this.webPage.headerText) {
-            this.webPage.headerText.textContent = fileHandler.getText();
-        }
+
     }
 
 }

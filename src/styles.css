@@ -9,10 +9,10 @@ body {
   background-color: #333;
 }
 
-.container {
+.TextContainer {
   width: 800px;
   max-width: 80%;
-  background-color: white;
+  background-color: whitesmoke;
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0 0 10px 2px;
@@ -28,4 +28,19 @@ body {
 
 .btn:hover {
   background-color: lightskyblue;
+}
+
+.InventoryContainer {
+  position: absolute;
+  right: 10vh;
+  top: 20vh;
+  width: 25vh;
+  max-width: 20%;
+  height: 60vh;
+  max-height: 80%;
+  background-color: whitesmoke;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 2px;
+  text-align: center;
 }
