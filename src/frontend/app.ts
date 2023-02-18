@@ -39,10 +39,10 @@ class GameHandler {
 
 
 export function main():void {
-    let webPage: WebPage = new WebPage();
-    let initialised: boolean = webPage.initWebPage();
+    const webPage: WebPage = new WebPage();
+    const initialised: boolean = webPage.initWebPage();
     if (initialised) {
-        var gameHandler: GameHandler = new GameHandler(webPage);
+        const gameHandler: GameHandler = new GameHandler(webPage);
         gameHandler.mainEventLoop();
     }
 }
