@@ -1,3 +1,4 @@
+// Returns true is a file exists in the selected folder, false if not
 export const fileExists = async (filename: string): Promise<boolean> => {
     try {
         const stats = await Deno.lstat(filename);
