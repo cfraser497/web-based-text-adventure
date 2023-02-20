@@ -7,8 +7,8 @@ const app = new Application();
 
 //use the routes that we defined (e.g. get and post methods)
 app.use(router.routes());
-//we cant make a post request on something that has a different request type
-//app.use(router.allowedMethods());
+app.use(router.allowedMethods());
+
 app.use(staticFileMiddleware);
 
 app.addEventListener("listen", ({hostname, port, secure}) => {

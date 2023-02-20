@@ -1,3 +1,6 @@
+import { renderFile } from "./deps.ts";
+import gameHandler from "./models/GameHandler.ts";
+
 // Returns true is a file exists in the selected folder, false if not
 export const fileExists = async (filename: string): Promise<boolean> => {
     try {
@@ -11,3 +14,13 @@ export const fileExists = async (filename: string): Promise<boolean> => {
         }
     }
 };
+
+//renders webpage
+export function renderWebPage ():Promise<Deno.Reader> {
+    return renderFile(
+        `${Deno.cwd()}/views/index.ejs`, {
+            chapterText: gameHandler.getChapterText(),
+            options: gameHandler.getOptions()
+         }
+    );
+}

@@ -1,16 +1,22 @@
 import { RouterContext } from "../deps.ts"
-import { getChapter } from "../file_reader.ts";
+import gameHandler from "../models/GameHandler.ts";
+import { renderWebPage } from "../utils.ts";
 
 class GameController {
 
     async update(ctx: RouterContext<"/">){
-        const {nextChapter} = await ctx.request.body().value;
+        const body = ctx.request.body({ type: 'form' })
+        const value = await body.value
+        const valueAsString = value.toString();
+        const nextChapter = valueAsString.slice(valueAsString.indexOf("=") + 1);
+        console.log(nextChapter);
         if (!nextChapter) {
             ctx.response.status = 422;
             ctx.response.body = { message: "No file found" };
             return;
         }
-        ctx.response.body = getChapter(nextChapter);
+        await gameHandler.setChapter(nextChapter);
+        ctx.response.body = await renderWebPage();
     }
 }
 
