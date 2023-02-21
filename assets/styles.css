@@ -10,8 +10,9 @@ body {
 }
 
 .TextContainer {
-  width: 800px;
-  max-width: 80%;
+  position: absolute;
+  left: 15vw;
+  width: 60vw;
   background-color: whitesmoke;
   padding: 10px;
   border-radius: 5px;
@@ -32,12 +33,10 @@ button:hover {
 
 .InventoryContainer {
   position: absolute;
-  right: 10vh;
+  right: 5vw;
   top: 20vh;
-  width: 25vh;
-  max-width: 20%;
+  width: 12vw;
   height: 60vh;
-  max-height: 80%;
   background-color: whitesmoke;
   padding: 10px;
   border-radius: 5px;

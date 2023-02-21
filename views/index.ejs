@@ -13,7 +13,6 @@
 
             <form action="/" method = "post">
                 <% for (const option of options) { %>
-                    <!-- <button value=<%= option.getValue() %>><%= option.getText() %></button> -->
                     <button name= name<%= option.getValue() %> value=<%=option.getValue() %>><%= option.getText() %></button>
                 <% } %>
             </form>
