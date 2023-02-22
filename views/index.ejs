@@ -15,6 +15,9 @@
                 <% for (const option of options) { %>
                     <button name= name<%= option.getValue() %> value=<%=option.getValue() %>><%= option.getText() %></button>
                 <% } %>
+                <% for (const item of items) { %>
+                    <button name= name<%= item.getName() %> value=<%= item.getName() %>>Take <%= item.getName() %></button>
+                <% } %>
             </form>
         </div>
         <div class="InventoryContainer">

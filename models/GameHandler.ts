@@ -1,12 +1,15 @@
 import Chapter from "./Chapter.ts";
-import Option from "./Option.ts";
+import Option from "./Data/Option.ts";
+import Item from "./Data/Item.ts";
 
 class GameHandler {
 
     currentChapter: Chapter;
+    inventory: Item[];
 
     constructor(firstChapter: Chapter) {
         this.currentChapter = firstChapter;
+        this.inventory = new Array<Item>;
     }
 
     
@@ -37,6 +40,14 @@ class GameHandler {
 
     getOptions(): Option[] {
         return this.currentChapter.getOptions();
+    }
+
+    getChapterItems(): Item[] {
+        return this.currentChapter.getItems();
+    }
+
+    getInventory(): Item[] {
+        return this.inventory;
     }
 }
 

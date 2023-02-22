@@ -20,7 +20,8 @@ export function renderWebPage ():Promise<Deno.Reader> {
     return renderFile(
         `${Deno.cwd()}/views/index.ejs`, {
             chapterText: gameHandler.getChapterText(),
-            options: gameHandler.getOptions()
+            options: gameHandler.getOptions(),
+            items: gameHandler.getChapterItems()
          }
     );
 }

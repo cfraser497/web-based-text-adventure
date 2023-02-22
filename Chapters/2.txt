@@ -1,4 +1,4 @@
 you went left
 
-#3 go right
-#4 go straight
+#3 Go right
+#4 Go straight
