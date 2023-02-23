@@ -21,7 +21,8 @@ export function renderWebPage ():Promise<Deno.Reader> {
         `${Deno.cwd()}/views/index.ejs`, {
             chapterText: gameHandler.getChapterText(),
             options: gameHandler.getOptions(),
-            items: gameHandler.getChapterItems()
+            items: gameHandler.getChapterItems(),
+            inventory: gameHandler.getInventory()
          }
     );
 }

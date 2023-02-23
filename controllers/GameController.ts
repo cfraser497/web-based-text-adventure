@@ -8,14 +8,24 @@ class GameController {
         const body = ctx.request.body({ type: 'form' })
         const value = await body.value
         const valueAsString = value.toString();
-        const nextChapter = valueAsString.slice(valueAsString.indexOf("=") + 1);
-        console.log(nextChapter);
-        if (!nextChapter) {
-            ctx.response.status = 422;
-            ctx.response.body = { message: "No file found" };
-            return;
+        console.log("incoming data: " + valueAsString);
+        const [type, data] = valueAsString.split("=", 2);
+        switch (type) {
+            case "option": 
+                await gameHandler.setChapter(data);
+                break;
+            case "item":
+                await gameHandler.addItemToInventory(data);
+                break;
+            case "restart":
+                await gameHandler.reset();
+                break;
+            default:
+                ctx.response.status = 422;
+                ctx.response.body = { message: "No file found" };
+                return;
         }
-        await gameHandler.setChapter(nextChapter);
+
         ctx.response.body = await renderWebPage();
     }
 }

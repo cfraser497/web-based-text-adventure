@@ -1,15 +1,16 @@
 import Chapter from "./Chapter.ts";
 import Option from "./Data/Option.ts";
 import Item from "./Data/Item.ts";
+import getItem from "./itemGetter.ts"
 
 class GameHandler {
 
     currentChapter: Chapter;
-    inventory: Item[];
+    inventory: Map<string, number>;
 
     constructor(firstChapter: Chapter) {
         this.currentChapter = firstChapter;
-        this.inventory = new Array<Item>;
+        this.inventory = new Map<string, number>;
     }
 
     
@@ -34,6 +35,20 @@ class GameHandler {
         return false;
     }
 
+    // If the item exists in the inventory, add 1 to the number we have
+    // Otherwise,  we add it to the map
+    addItemToInventory(itemStr: string) {
+        const item: Item | undefined = getItem(itemStr);
+        if (item) {
+            if (this.inventory.has(item.name)) {
+                const oldValue: number = this.inventory.get(item.name)!;
+                this.inventory.set(item.name, oldValue + 1);
+            } else {
+                this.inventory.set(item.name, 1);
+            }
+        }
+    }
+
     getChapterText(): string {
         return this.currentChapter.getText();
     }
@@ -46,8 +61,13 @@ class GameHandler {
         return this.currentChapter.getItems();
     }
 
-    getInventory(): Item[] {
+    getInventory(): Map<string, number> {
         return this.inventory;
+    }
+
+    async reset(): Promise<void> {
+        this.inventory.clear();
+        this.currentChapter = await Chapter.build(firstChapterName);
     }
 }
 

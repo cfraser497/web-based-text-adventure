@@ -20,15 +20,41 @@ body {
 }
 
 button {
-  background-color: lightblue;
-  border: 1px solid lightskyblue;
   border-radius: 5px;
   padding: 5px 10px;
-  outline: none;
 }
 
-button:hover {
+.restartButton {
+  position: absolute;
+  right: 5vw;
+  top: 10vh;
+  width: 13vw;
+  height: 5vh;
+  background-color: whitesmoke;
+  text-align: center;
+  box-shadow: 0 0 10px 2px;
+}
+
+.restartButton:hover {
+  background-color: lightgray;
+}
+
+.option {
+  background-color: lightblue;
+  border: 1px solid lightskyblue;
+}
+
+.option:hover {
   background-color: lightskyblue;
+}
+
+.item {
+  background-color: lightgreen;
+  border: 1px solid greenyellow;
+}
+
+.item:hover {
+  background-color: greenyellow;
 }
 
 .InventoryContainer {
@@ -42,4 +68,22 @@ button:hover {
   border-radius: 5px;
   box-shadow: 0 0 10px 2px;
   text-align: center;
+}
+
+.inventoryItems {
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: 80% 20%;
+  row-gap: 1%;
+  background-color: #333;
+}
+
+.invElemName {
+  text-align: left;
+  background-color: whitesmoke;
+}
+
+.invElemNum {
+  text-align: right;
+  background-color: whitesmoke;
 }

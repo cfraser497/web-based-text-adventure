@@ -2,3 +2,4 @@ you went left
 
 #3 Go right
 #4 Go straight
+%Ancient_Stick

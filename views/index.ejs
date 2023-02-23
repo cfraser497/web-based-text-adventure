@@ -8,20 +8,31 @@
         <title>Text Adventure</title>
     </head>
     <body>
+        <form action="/" method="post">
+            <button name="restart" value="restart" class="restartButton">Restart Game</button>
+        </form>
         <div class="TextContainer">
             <div id="text"><%= chapterText %></div>
 
             <form action="/" method = "post">
                 <% for (const option of options) { %>
-                    <button name= name<%= option.getValue() %> value=<%=option.getValue() %>><%= option.getText() %></button>
+                    <button name= option value=<%=option.getValue() %> class="option"><%= option.getText() %></button>
                 <% } %>
                 <% for (const item of items) { %>
-                    <button name= name<%= item.getName() %> value=<%= item.getName() %>>Take <%= item.getName() %></button>
+                    <button name= item value=<%= item.getId() %> class="item">Take <%= item.getName() %></button>
                 <% } %>
             </form>
         </div>
         <div class="InventoryContainer">
             <div id="inventoryName">Inventory</div>
+            <div class="inventoryItems">
+            <% for (const item of inventory.entries()) { %>
+                <a id=invItem<%=item[0]%> class="invElemName"><%=item[0]%></a>
+                <div id=invNum<%=item[0]%> class="invElemNum"><% if(item[1] > 1) { %>
+                    <%= item[1] %>
+                <% } %></div> 
+            <% } %>
+            </div>
         </div>
     </body>
 </html>

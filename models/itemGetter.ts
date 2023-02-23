@@ -5,12 +5,12 @@ import AncientStick from "./Data/Items/AncientStick.ts";
 
 const itemsMap = new Map([
     ["Trinket", Trinket],
-    ["AncientStick", AncientStick]  
+    ["Ancient_Stick", AncientStick]  
 ]);
 
 export default function getItem(item:string): Item | undefined {
     try {
-        const temp = itemsMap.get(item);
+        const temp = itemsMap.get(item)!;
         if (temp)
             return new temp();
     } catch (e) {
