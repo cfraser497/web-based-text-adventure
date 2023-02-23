@@ -15,7 +15,7 @@ class GameController {
                 await gameHandler.setChapter(data);
                 break;
             case "item":
-                await gameHandler.addItemToInventory(data);
+                gameHandler.getInventory().add(data);
                 break;
             case "restart":
                 await gameHandler.reset();

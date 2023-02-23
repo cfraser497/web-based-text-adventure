@@ -22,7 +22,7 @@ export function renderWebPage ():Promise<Deno.Reader> {
             chapterText: gameHandler.getChapterText(),
             options: gameHandler.getOptions(),
             items: gameHandler.getChapterItems(),
-            inventory: gameHandler.getInventory(),
+            inventory: gameHandler.getInventory().getInventoryMap(),
             currentItem: gameHandler.getCurrentItem()
          }
     );

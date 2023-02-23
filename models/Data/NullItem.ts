@@ -1,6 +1,6 @@
 import Item from "./Item.ts";
 
-export default class EmptyItem extends Item {
+export default class NullItem extends Item {
     readonly name: string = "empty";
     readonly id: string = "empty";
     readonly description: string = "empty";
