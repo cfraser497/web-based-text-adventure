@@ -28,11 +28,16 @@
             <div class="inventoryItems">
             <% for (const item of inventory.entries()) { %>
                 <a id=invItem<%=item[0]%> class="invElemName"><%=item[0]%></a>
+                <div id=invItemDesc<%=item[0]%> class="invElemDesc">Stuff shown on hover</div>
                 <div id=invNum<%=item[0]%> class="invElemNum"><% if(item[1] > 1) { %>
                     <%= item[1] %>
                 <% } %></div> 
             <% } %>
             </div>
+        </div>
+
+        <div class="CurrentItemContainter">
+            <div class="currItemName"><%= currentItem</div>
         </div>
     </body>
 </html>

@@ -74,13 +74,25 @@ button {
   display: grid;
   justify-content: space-between;
   grid-template-columns: 80% 20%;
-  row-gap: 1%;
+  row-gap: 3%;
   background-color: #333;
 }
 
 .invElemName {
   text-align: left;
   background-color: whitesmoke;
+}
+
+.invElemDesc {
+  position: relative;
+  display: none;
+  background-color: whitesmoke;
+  border: 1px solid #333;
+  width: 12vw;
+}
+
+.invElemName:hover + .invElemDesc {
+  display: block;
 }
 
 .invElemNum {

@@ -2,15 +2,18 @@ import Chapter from "./Chapter.ts";
 import Option from "./Data/Option.ts";
 import Item from "./Data/Item.ts";
 import getItem from "./itemGetter.ts"
+import EmptyItem from "./Data/EmptyItem.ts";
 
 class GameHandler {
 
     currentChapter: Chapter;
     inventory: Map<string, number>;
+    currentItem: Item;
 
     constructor(firstChapter: Chapter) {
         this.currentChapter = firstChapter;
         this.inventory = new Map<string, number>;
+        this.currentItem = new EmptyItem();
     }
 
     
@@ -63,6 +66,10 @@ class GameHandler {
 
     getInventory(): Map<string, number> {
         return this.inventory;
+    }
+
+    getCurrentItem(): Item {
+        return this.currentItem;
     }
 
     async reset(): Promise<void> {
