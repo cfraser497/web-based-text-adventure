@@ -23,7 +23,13 @@ export function renderWebPage ():Promise<Deno.Reader> {
             options: gameHandler.getOptions(),
             items: gameHandler.getChapterItems(),
             inventory: gameHandler.getInventory().getInventoryMap(),
-            currentItem: gameHandler.getCurrentItem()
+            currentItem: gameHandler.getCurrentItem(),
+            getItemIdFromName: getItemIdFromName
          }
     );
+}
+
+//replaces spaces with underscores
+export function getItemIdFromName (name: string): string {
+    return name.replaceAll(" ", "_");
 }

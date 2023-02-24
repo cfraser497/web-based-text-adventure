@@ -29,7 +29,7 @@
                 <form action="/" method="post">
                     <div class="inventoryItems">
                     <% for (const item of inventory.entries()) { %>
-                        <button name= currItem value=<%= item[0] %> class="invElem invElemName"><%=item[0]%></button>
+                        <button name= currItem value=<%= getItemIdFromName(item[0]) %> class="invElem invElemName"><%=item[0]%></button>
                         <div id=invNum<%=item[0]%> class="invElem invElemNum"><% if(item[1] > 1) { %>
                             <%= item[1] %>
                         <% } %></div>
