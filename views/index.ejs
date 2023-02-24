@@ -8,36 +8,42 @@
         <title>Text Adventure</title>
     </head>
     <body>
-        <form action="/" method="post">
-            <button name="restart" value="restart" class="restartButton">Restart Game</button>
-        </form>
         <div class="TextContainer">
             <div id="text"><%= chapterText %></div>
 
             <form action="/" method = "post">
                 <% for (const option of options) { %>
-                    <button name= option value=<%=option.getValue() %> class="option"><%= option.getText() %></button>
+                    <button name= pickOption value=<%=option.getValue() %> class="option textButton"><%= option.getText() %></button>
                 <% } %>
                 <% for (const item of items) { %>
-                    <button name= item value=<%= item.getId() %> class="item">Take <%= item.getName() %></button>
+                    <button name= takeItem value=<%= item.getId() %> class="item textButton">Take <%= item.getName() %></button>
                 <% } %>
             </form>
         </div>
-        <div class="InventoryContainer">
-            <div id="inventoryName">Inventory</div>
-            <div class="inventoryItems">
-            <% for (const item of inventory.entries()) { %>
-                <a id=invItem<%=item[0]%> class="invElemName"><%=item[0]%></a>
-                <div id=invItemDesc<%=item[0]%> class="invElemDesc">Stuff shown on hover</div>
-                <div id=invNum<%=item[0]%> class="invElemNum"><% if(item[1] > 1) { %>
-                    <%= item[1] %>
-                <% } %></div> 
-            <% } %>
+        <div class="RightSideGrid">
+            <form action="/" method="post">
+                <button name="restart" value="restart" class="restartButton">Restart Game</button>
+            </form>
+            <div class="InventoryContainer">
+                <div id="inventoryName">Inventory</div>
+                <form action="/" method="post">
+                    <div class="inventoryItems">
+                    <% for (const item of inventory.entries()) { %>
+                        <button name= currItem value=<%= item[0] %> class="invElem invElemName"><%=item[0]%></button>
+                        <div id=invNum<%=item[0]%> class="invElem invElemNum"><% if(item[1] > 1) { %>
+                            <%= item[1] %>
+                        <% } %></div>
+                    <% } %>
+                    </div>
+                </form>
             </div>
-        </div>
 
-        <div class="CurrentItemContainter">
-            <div class="currItemName"><%= currentItem</div>
+            <div class="CurrentItemContainer">
+                <% if (currentItem.getId() != "null") { %>
+                    <div class="currItemName"><%= currentItem.getName() %></div>
+                    <div class="cirrItemDesc"><%= currentItem.getDescription() %></div>
+                <% } %>
+            </div>
         </div>
     </body>
 </html>

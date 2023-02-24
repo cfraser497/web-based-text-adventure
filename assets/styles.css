@@ -19,24 +19,9 @@ body {
   box-shadow: 0 0 10px 2px;
 }
 
-button {
+.textButton {
   border-radius: 5px;
   padding: 5px 10px;
-}
-
-.restartButton {
-  position: absolute;
-  right: 5vw;
-  top: 10vh;
-  width: 13vw;
-  height: 5vh;
-  background-color: whitesmoke;
-  text-align: center;
-  box-shadow: 0 0 10px 2px;
-}
-
-.restartButton:hover {
-  background-color: lightgray;
 }
 
 .option {
@@ -57,12 +42,33 @@ button {
   background-color: greenyellow;
 }
 
-.InventoryContainer {
+.RightSideGrid {
+  display: grid;
+  grid-template-columns: none;
+  grid-template-rows: 5vh 45vh 30vh;
   position: absolute;
   right: 5vw;
-  top: 20vh;
-  width: 12vw;
-  height: 60vh;
+  top: 5vh;
+  width: 15vw;
+  padding: 10px;
+  row-gap: 5vh;
+}
+
+.restartButton {
+  background-color: lightcoral;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 2px;
+}
+
+.restartButton:hover {
+  background-color: red;
+}
+
+.InventoryContainer {
   background-color: whitesmoke;
   padding: 10px;
   border-radius: 5px;
@@ -78,24 +84,25 @@ button {
   background-color: #333;
 }
 
+.invElem:hover {
+  background-color: lightblue;
+}
+
 .invElemName {
   text-align: left;
   background-color: whitesmoke;
-}
-
-.invElemDesc {
-  position: relative;
-  display: none;
-  background-color: whitesmoke;
-  border: 1px solid #333;
-  width: 12vw;
-}
-
-.invElemName:hover + .invElemDesc {
-  display: block;
+  border: none;
 }
 
 .invElemNum {
   text-align: right;
   background-color: whitesmoke;
+}
+
+.CurrentItemContainer {
+  background-color: whitesmoke;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 2px;
+  text-align: center;
 }

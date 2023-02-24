@@ -11,11 +11,14 @@ class GameController {
         console.log("incoming data: " + valueAsString);
         const [type, data] = valueAsString.split("=", 2);
         switch (type) {
-            case "option": 
+            case "pickOption": 
                 await gameHandler.setChapter(data);
                 break;
-            case "item":
+            case "takeItem":
                 gameHandler.getInventory().add(data);
+                break;
+            case "currItem":
+                gameHandler.setCurrentItem(data);
                 break;
             case "restart":
                 await gameHandler.reset();

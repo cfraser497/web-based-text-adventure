@@ -3,6 +3,7 @@ import Option from "./Data/Option.ts";
 import Item from "./Data/Item.ts";
 import NullItem from "./Data/NullItem.ts";
 import Inventory from "./Inventory.ts";
+import getItem from "./itemGetter.ts";
 
 class GameHandler {
 
@@ -24,6 +25,15 @@ class GameHandler {
         } else {
             console.log("invalid chapter");
             return false;
+        }
+    }
+
+    setCurrentItem(itemStr: string): void {
+        const item: Item | undefined = getItem(itemStr);
+        if (item) {
+            this.currentItem = item;
+        } else {
+            throw new Error ("Unexpexted Item: " + itemStr);
         }
     }
 
