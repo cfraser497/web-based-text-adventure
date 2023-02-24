@@ -56,7 +56,7 @@ class GameHandler {
         return this.currentChapter.getOptions();
     }
 
-    getChapterItems(): Item[] {
+    getChapterItems(): Inventory {
         return this.currentChapter.getItems();
     }
 

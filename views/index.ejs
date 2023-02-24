@@ -15,8 +15,10 @@
                 <% for (const option of options) { %>
                     <button name= pickOption value=<%=option.getValue() %> class="option textButton"><%= option.getText() %></button>
                 <% } %>
-                <% for (const item of items) { %>
-                    <button name= takeItem value=<%= item.getId() %> class="item textButton">Take <%= item.getName() %></button>
+                <% for (const item of items.entries()) { %>
+                    <% for (let i = 0; i < item[1]; i++) { %>
+                        <button name= takeItem value=<%= getItemIdFromName(item[0]) %> class="item textButton">Take <%= item[0] %></button>
+                    <% } %>
                 <% } %>
             </form>
         </div>

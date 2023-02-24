@@ -16,6 +16,7 @@ class GameController {
                 break;
             case "takeItem":
                 gameHandler.getInventory().add(data);
+                gameHandler.getChapterItems().remove(data);
                 break;
             case "currItem":
                 gameHandler.setCurrentItem(data);

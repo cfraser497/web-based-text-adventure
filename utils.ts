@@ -17,12 +17,11 @@ export const fileExists = async (filename: string): Promise<boolean> => {
 
 //renders webpage
 export function renderWebPage ():Promise<Deno.Reader> {
-    //console.log(gameHandler.getChapterItems());
     return renderFile(
         `${Deno.cwd()}/views/index.ejs`, {
             chapterText: gameHandler.getChapterText(),
             options: gameHandler.getOptions(),
-            items: gameHandler.getChapterItems(),
+            items: gameHandler.getChapterItems().getInventoryMap(),
             inventory: gameHandler.getInventory().getInventoryMap(),
             currentItem: gameHandler.getCurrentItem(),
             getItemIdFromName: getItemIdFromName

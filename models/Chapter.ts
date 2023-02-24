@@ -2,6 +2,7 @@ import Item from "./Data/Item.ts";
 import Option from "./Data/Option.ts";
 import getItem from "./itemGetter.ts";
 import { removeNewLine } from "../utils.ts";
+import Inventory from "./Inventory.ts";
 
 // A chapter is a text file containing a block of text about the
 // information contained in that chapter, as well as filenames of
@@ -9,11 +10,11 @@ import { removeNewLine } from "../utils.ts";
 export default class Chapter {
     private readonly chapterText: string;
     private readonly options: Option[];
-    private readonly items: Item[];
+    private readonly items: Inventory;
 
     // private constructor as we use a builder design pattern to construct
     // chapters as constructors cannot be asynchronous
-    private constructor(chapterText: string, options: Option[], items: Item[]) {
+    private constructor(chapterText: string, options: Option[], items: Inventory) {
         this.chapterText = chapterText;
         this.options = options;
         this.items = items;
@@ -29,14 +30,14 @@ export default class Chapter {
         return new Chapter(parsedContents[0], parsedContents[1], parsedContents[2]);
     }
 
-    static parseChapter(content: string): [string, Option[], Item[]] {
+    static parseChapter(content: string): [string, Option[], Inventory] {
         const splitContentsForItems = content.split('%');
         const splitContentsForOptions: string[] = splitContentsForItems[0].split("#");
         const chapterText: string = splitContentsForOptions[0];
         const numItems: number = splitContentsForItems.length - 1;
         const numOptions: number = splitContentsForOptions.length - 1;
         const options: Option[] = new Array(numOptions);
-        const items: Item[] = new Array(numItems);
+        const items: Inventory = new Inventory();
 
         // loop over each option and fill out the option class
         for (let i = 0; i < numOptions; i++) {
@@ -51,10 +52,8 @@ export default class Chapter {
             const itemName = removeNewLine(splitContentsForItems[i + 1]);
             const item: Item | undefined = getItem(itemName);
             if (item)
-                items[i] = item;
+                items.add(item.getId());
         }
-        console.log(options);
-        console.log(items);
         return [chapterText, options, items];
     }
 
@@ -66,7 +65,7 @@ export default class Chapter {
         return this.options;
     }
 
-    getItems(): Item[] {
+    getItems(): Inventory {
         return this.items;
     }
 }
