@@ -1,10 +1,10 @@
 // items are uniquely identified by their name.
 import Item from "./Data/Item.ts"
-import Trinket from "./Data/Items/Trinket.ts";
 import AncientStick from "./Data/Items/AncientStick.ts";
+import Pile_of_Coins from "./Data/Items/Pile_of_Coins.ts";
 
 const itemsMap = new Map([
-    ["Trinket", Trinket],
+    ["Pile_of_Coins", Pile_of_Coins],
     ["Ancient_Stick", AncientStick]  
 ]);
 

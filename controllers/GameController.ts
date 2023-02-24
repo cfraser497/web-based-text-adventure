@@ -20,6 +20,9 @@ class GameController {
             case "currItem":
                 gameHandler.setCurrentItem(data);
                 break;
+            case "use":
+                gameHandler.currentItem.use();
+                break;
             case "restart":
                 await gameHandler.reset();
                 break;

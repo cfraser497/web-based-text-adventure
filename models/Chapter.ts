@@ -1,6 +1,7 @@
 import Item from "./Data/Item.ts";
 import Option from "./Data/Option.ts";
 import getItem from "./itemGetter.ts";
+import { removeNewLine } from "../utils.ts";
 
 // A chapter is a text file containing a block of text about the
 // information contained in that chapter, as well as filenames of
@@ -47,11 +48,13 @@ export default class Chapter {
         }
         // loop over each item and instantiate each item
         for (let i = 0; i < numItems; i++) {
-            const itemName = splitContentsForItems[i + 1];
+            const itemName = removeNewLine(splitContentsForItems[i + 1]);
             const item: Item | undefined = getItem(itemName);
             if (item)
                 items[i] = item;
         }
+        console.log(options);
+        console.log(items);
         return [chapterText, options, items];
     }
 

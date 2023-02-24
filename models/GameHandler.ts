@@ -71,6 +71,7 @@ class GameHandler {
     async reset(): Promise<void> {
         this.inventory.clear();
         this.currentChapter = await Chapter.build(firstChapterName);
+        this.currentItem = new NullItem();
     }
 }
 

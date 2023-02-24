@@ -1,12 +1,13 @@
 import Item from "./Item.ts";
 
 export default class NullItem extends Item {
-    readonly name: string = "null";
-    readonly id: string = "null";
+    readonly name: string;
     readonly description: string = "null";
 
     constructor() {
-        super();
+        const name = "null"
+        super(name);
+        this.name = name;
     }
 
     use(): void {

@@ -1,12 +1,19 @@
+import { getItemIdFromName } from "../../utils.ts";
+
 export default abstract class Item {
     //How the item will be printed
     abstract readonly name: string;
     //How the item will be internally represented (replacing spaces with underscores)
-    abstract readonly id: string;
+    readonly id: string;
     //A description of what the item is
     abstract readonly description: string ;
+    //a path to the image location
+    readonly image: string;
 
-    constructor () {}
+    constructor(name: string) {
+        this.id = getItemIdFromName(name);
+        this.image = `./images/items/${this.id}.png`;
+    }
 
     abstract use():void;
 
@@ -20,6 +27,10 @@ export default abstract class Item {
 
     getId(): string {
         return this.id;
+    }
+
+    getImage(): string {
+        return this.image;
     }
 
     static toString(): string {

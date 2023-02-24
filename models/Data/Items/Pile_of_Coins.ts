@@ -1,17 +1,17 @@
 import { getItemIdFromName } from "../../../utils.ts";
 import Item from "../Item.ts"
 
-export default class AncientStick extends Item {
+export default class Pile_of_Coins extends Item {
     readonly name: string;
-    readonly description: string = "A mysterious stick";
+    readonly description: string = "They are of an unknown currency..";
 
     constructor() {
-        const name = "Ancient Stick";
+        const name = "Pile of Coins";
         super(name);
         this.name = name;
     }
 
     use(): void {
-        console.log("i wouldnt use the stick");
+        console.log("you used the pile of coins");
     }
 }

@@ -41,7 +41,13 @@
             <div class="CurrentItemContainer">
                 <% if (currentItem.getId() != "null") { %>
                     <div class="currItemName"><%= currentItem.getName() %></div>
-                    <div class="cirrItemDesc"><%= currentItem.getDescription() %></div>
+                    <div class="currItemDesc"><%= currentItem.getDescription() %></div>
+                    <div class="currItemImageContainer">
+                        <img src= <%= currentItem.getImage() %> alt="<%=currentItem.getName() %> Image">
+                    </div>
+                    <form action="/" method="post">
+                        <button name="use" value="PLACE_HOLDER" class = "option textButton"> Use <%= currentItem.getName() %></button>
+                    </form>
                 <% } %>
             </div>
         </div>
