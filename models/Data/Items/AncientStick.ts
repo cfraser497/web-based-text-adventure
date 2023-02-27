@@ -1,5 +1,5 @@
-import { getItemIdFromName } from "../../../utils.ts";
 import Item from "../Item.ts"
+import gameHandler from "../../GameHandler.ts";
 
 export default class AncientStick extends Item {
     readonly name: string;
@@ -11,7 +11,7 @@ export default class AncientStick extends Item {
         this.name = name;
     }
 
-    use(): void {
-        console.log("i wouldnt use the stick");
+    async use(): Promise<void> {
+        await gameHandler.setChapter("Ancient_Stick");
     }
 }

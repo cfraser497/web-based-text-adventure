@@ -37,3 +37,7 @@ export function getItemIdFromName (name: string): string {
 export function removeNewLine(text: string): string {
     return text.replace("\n", "");
 }
+
+export async function validChapter(chapter: string): Promise<boolean> {
+    return await fileExists(`${Deno.cwd()}/Chapters/${chapter}.txt`);
+}

@@ -22,7 +22,7 @@ class GameController {
                 gameHandler.setCurrentItem(data);
                 break;
             case "use":
-                gameHandler.currentItem.use();
+                await gameHandler.currentItem.use();
                 break;
             case "restart":
                 await gameHandler.reset();

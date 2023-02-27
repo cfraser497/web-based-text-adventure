@@ -4,26 +4,29 @@ import Item from "./Data/Item.ts";
 import NullItem from "./Data/NullItem.ts";
 import Inventory from "./Inventory.ts";
 import getItem from "./itemGetter.ts";
+import { validChapter } from "../utils.ts";
 
 class GameHandler {
 
     currentChapter: Chapter;
     inventory: Inventory;
     currentItem: Item;
+    whitelistedChapters: string[];
 
-    constructor(firstChapter: Chapter) {
+    constructor(firstChapter: Chapter, whiteistedChapters: string []) {
         this.currentChapter = firstChapter;
         this.inventory = new Inventory();
         this.currentItem = new NullItem();
+        this.whitelistedChapters = whiteistedChapters;
     }
 
     
     async setChapter(chapter: string): Promise<boolean> {
-        if (this.validChapter(chapter)) {
+        if (this.validOption(chapter)) {
             this.currentChapter = await Chapter.build(chapter);
             return true;
         } else {
-            console.log("invalid chapter");
+            console.log("invalid chapter: " + chapter);
             return false;
         }
     }
@@ -39,13 +42,25 @@ class GameHandler {
 
     // Check if the chapter selected is a chapter that is allowed to be selected
     // after the current chapter.
-    validChapter(chapter: string): boolean {
+    validOption(chapter: string): boolean {
         const options = this.currentChapter.getOptions();
+        //Check if the chapter is an available option from the current chapter
         for (const option of options) {
             if (option.getValue() == chapter)
                 return true;
         }
+        //Check if the chapter is available at any point
+        if (this.whitelistedChapters.includes(chapter))
+            return true;
+        
         return false;
+    }
+
+    async addWhitelistedChapter(chapter: string): Promise<void> {
+        if (await validChapter(chapter))
+            this.whitelistedChapters.push(chapter);
+        else
+            throw new Error("Cannot add whitelisted chapter: " + chapter);
     }
 
     getChapterText(): string {
@@ -72,10 +87,15 @@ class GameHandler {
         this.inventory.clear();
         this.currentChapter = await Chapter.build(firstChapterName);
         this.currentItem = new NullItem();
+        this.whitelistedChapters = whiteistedChapters;
     }
 }
 
 const firstChapterName = "1";
+const whiteistedChapters = [
+    "Ancient_Stick"
+]
+
 const firstChapter = await Chapter.build(firstChapterName);
-const gameHandler = new GameHandler(firstChapter);
+const gameHandler = new GameHandler(firstChapter, whiteistedChapters);
 export default gameHandler;

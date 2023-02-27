@@ -110,6 +110,10 @@ body {
   text-align: center;
 }
 
+.currItemDesc {
+  font-size: 90%;
+}
+
 .currItemImageContainer img {
   object-fit: contain;
   width: 100%;
