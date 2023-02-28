@@ -20,8 +20,6 @@ class GameController {
                 gameHandler.getInventory().add(data);
                 gameHandler.getChapterItems().remove(data);
                 const item: Item | undefined = getItem(data);
-                console.log("item: " + item?.getName());
-                console.log("item next chapter: " + item?.getNextChapterWhenTaken());
                 if (item && item.getNextChapterWhenTaken() != "null")
                     await gameHandler.setChapter(item.getNextChapterWhenTaken());
                 break;

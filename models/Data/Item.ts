@@ -38,7 +38,6 @@ export default abstract class Item {
     }
 
     setNextChapterWhenTaken(chapter: string): void {
-        console.log("in setting next chapter function, setting chapter " + chapter);
         this.nextChapterWhenTaken = chapter;
     }
 

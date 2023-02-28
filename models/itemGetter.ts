@@ -10,6 +10,7 @@ const itemsMap = new Map([
     ["Pile_of_Stones", pile_of_Stones]
 ]);
 
+//Factory design pattern method of getting items
 export default function getItem(item:string): Item | undefined {
     try {
         const temp = itemsMap.get(item)!;

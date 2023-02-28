@@ -4,16 +4,11 @@ import gameHandler from "../../GameHandler.ts";
 class AncientStick extends Item {
     readonly name: string;
     readonly description: string = "A mysterious stick";
-    private static instance: AncientStick;
 
-    private constructor() {
+    constructor() {
         const name = "Ancient Stick";
         super(name);
         this.name = name;
-    }
-
-    static getInstance(): AncientStick {
-        return AncientStick.instance || (AncientStick.instance = new AncientStick());
     }
 
     async use(): Promise<void> {
@@ -21,5 +16,5 @@ class AncientStick extends Item {
     }
 }
 
-const ancientStick: AncientStick = AncientStick.getInstance();
+const ancientStick: AncientStick = new AncientStick();
 export default ancientStick;
