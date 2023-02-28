@@ -49,10 +49,16 @@ export default class Chapter {
         }
         // loop over each item and instantiate each item
         for (let i = 0; i < numItems; i++) {
-            const itemName = removeNewLine(splitContentsForItems[i + 1]);
-            const item: Item | undefined = getItem(itemName);
-            if (item)
+            const itemNoNewLine = removeNewLine(splitContentsForItems[i + 1]);
+            const itemDetails = itemNoNewLine.split("->");
+            const item: Item | undefined = getItem(itemDetails[0]);
+            if (item) {
                 items.add(item.getId());
+                if (itemDetails[1]) {
+                    console.log("setting next chapter for " + itemDetails[0] + " to " + itemDetails[1]);
+                    item.setNextChapterWhenTaken(itemDetails[1]);
+                }
+            }
         }
         return [chapterText, options, items];
     }

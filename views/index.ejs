@@ -9,7 +9,11 @@
     </head>
     <body>
         <div class="TextContainer">
-            <div id="text"><%= chapterText %></div>
+            <div id="text">
+                <p>
+                    <%- chapterText %>
+                </p>
+            </div>
 
             <form action="/" method = "post">
                 <% for (const option of options) { %>

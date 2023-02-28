@@ -1,5 +1,7 @@
 import { RouterContext } from "../deps.ts"
 import gameHandler from "../models/GameHandler.ts";
+import Item from "../models/Data/Item.ts";
+import getItem from "../models/itemGetter.ts";
 import { renderWebPage } from "../utils.ts";
 
 class GameController {
@@ -14,10 +16,16 @@ class GameController {
             case "pickOption": 
                 await gameHandler.setChapter(data);
                 break;
-            case "takeItem":
+            case "takeItem": {
                 gameHandler.getInventory().add(data);
                 gameHandler.getChapterItems().remove(data);
+                const item: Item | undefined = getItem(data);
+                console.log("item: " + item?.getName());
+                console.log("item next chapter: " + item?.getNextChapterWhenTaken());
+                if (item && item.getNextChapterWhenTaken() != "null")
+                    await gameHandler.setChapter(item.getNextChapterWhenTaken());
                 break;
+            }
             case "currItem":
                 gameHandler.setCurrentItem(data);
                 break;
