@@ -1,0 +1,5 @@
+You venture round to the last side of the watchtower, treading carefully to avoid sharp bits of debris, and avoiding the intense heat of the inferno at the front of the watchtower.<br><br>
+You can still hear faint screams inside the tower when you notice an object glinting underneath a nearby bush. You go up to this object and discover that it is the backdoor key to the watchtower.<br><br>
+
+#TutorialOutsideDoor Go back to the back door
+%Key

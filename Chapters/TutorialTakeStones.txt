@@ -1,0 +1,5 @@
+You take some of the loose debris from the watchtower and stash them into your bag, before continuing to venture round to the back of the watchtower.<br><br>
+The fire round the back seems a little tamer, and you notice that the backdoor to the watchtower seems relatively unscathed.<br><br>
+
+#TutorialOutsideDoor Go up to the door
+#TutorialGetKey Continue looking round the watchtower

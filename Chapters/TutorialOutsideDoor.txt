@@ -1,0 +1,5 @@
+You go up to the backdoor, in an effort to maybe break your way into the watchtower. However as you grab the handle of the door, the seething heat of the metal handle makes it difficult to grab onto. <br><br>
+You lurch your hand away quickly from the handle, but in desperation and panic to save your friends, you attempt to turn the handle again, only to find out that the door is locked.
+
+#TutorialGetKey Explore further round the watchtower
+#TutorialInvestigateScreams Investigate the screams

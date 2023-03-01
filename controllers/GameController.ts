@@ -27,9 +27,14 @@ class GameController {
             case "currItem":
                 gameHandler.setCurrentItem(data);
                 break;
-            case "use":
-                await gameHandler.currentItem.use();
+            case "use": {
+                const currentItem = gameHandler.getCurrentItem();
+                if (await currentItem.use())
+                    gameHandler.getInventory().remove(currentItem.getId());
+                    if (!gameHandler.getInventory().contains(currentItem.getId()))
+                        gameHandler.setCurrentItem("null");
                 break;
+            }
             case "restart":
                 await gameHandler.reset();
                 break;

@@ -8,6 +8,15 @@ export default class Inventory {
         this.inventory =  new Map<string, number>();
     }
 
+    contains(itemStr: string): boolean {
+        const item: Item | undefined = getItem(itemStr);
+        if (item)
+            return this.inventory.has(item.name);
+        else {
+            throw new Error ("Item: " + itemStr + " does not exist in the inventory");
+        }
+    }
+
     remove(itemStr: string): void {
         const item: Item | undefined= getItem(itemStr);
         if (item && this.inventory.has(item.name)) {

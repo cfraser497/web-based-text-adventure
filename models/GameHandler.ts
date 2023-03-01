@@ -1,22 +1,22 @@
 import Chapter from "./Chapter.ts";
 import Option from "./Data/Option.ts";
 import Item from "./Data/Item.ts";
-import NullItem from "./Data/NullItem.ts";
 import Inventory from "./Inventory.ts";
 import getItem from "./itemGetter.ts";
 import { validChapter } from "../utils.ts";
+import null_Item from "./Data/NullItem.ts";
 
 class GameHandler {
 
-    currentChapter: Chapter;
-    inventory: Inventory;
-    currentItem: Item;
-    whitelistedChapters: string[];
+    private currentChapter: Chapter;
+    private inventory: Inventory;
+    private currentItem: Item;
+    private whitelistedChapters: string[];
 
     constructor(firstChapter: Chapter, whiteistedChapters: string []) {
         this.currentChapter = firstChapter;
         this.inventory = new Inventory();
-        this.currentItem = new NullItem();
+        this.currentItem = null_Item;
         this.whitelistedChapters = whiteistedChapters;
     }
 
@@ -53,6 +53,10 @@ class GameHandler {
         return this.currentChapter.getItems();
     }
 
+    getCurrentChapter(): Chapter {
+        return this.currentChapter;
+    }
+
     getInventory(): Inventory {
         return this.inventory;
     }
@@ -64,14 +68,15 @@ class GameHandler {
     async reset(): Promise<void> {
         this.inventory.clear();
         this.currentChapter = await Chapter.build(firstChapterName);
-        this.currentItem = new NullItem();
+        this.currentItem = null_Item;
         this.whitelistedChapters = whiteistedChapters;
     }
 }
 
 const firstChapterName = "start";
 const whiteistedChapters = [
-    "Ancient_Stick"
+    "Ancient_Stick",
+    "TutorialUnlockedDoor"
 ]
 
 const firstChapter = await Chapter.build(firstChapterName);

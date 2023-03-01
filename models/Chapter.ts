@@ -11,23 +11,25 @@ export default class Chapter {
     private readonly chapterText: string;
     private readonly options: Option[];
     private readonly items: Inventory;
+    private readonly id: string;
 
     // private constructor as we use a builder design pattern to construct
     // chapters as constructors cannot be asynchronous
-    private constructor(chapterText: string, options: Option[], items: Inventory) {
+    private constructor(id:string, chapterText: string, options: Option[], items: Inventory) {
         this.chapterText = chapterText;
         this.options = options;
         this.items = items;
+        this.id = id;
     }
 
-    static async build(chapter: string): Promise<Chapter> {
-        const path = `${Deno.cwd()}/Chapters/${chapter}.txt`;
+    static async build(id: string): Promise<Chapter> {
+        const path = `${Deno.cwd()}/Chapters/${id}.txt`;
         const content = await Deno.readTextFile(path);
         const parsedContents = this.parseChapter(content);
         //parsedContents[0] = Text for the chapter
         //parsedContents[1] = Options for the chapter
         //parsedContents[2] = Items for the chapter
-        return new Chapter(parsedContents[0], parsedContents[1], parsedContents[2]);
+        return new Chapter(id, parsedContents[0], parsedContents[1], parsedContents[2]);
     }
 
     static parseChapter(content: string): [string, Option[], Inventory] {
@@ -71,5 +73,9 @@ export default class Chapter {
 
     getItems(): Inventory {
         return this.items;
+    }
+
+    getId(): string {
+        return this.id;
     }
 }

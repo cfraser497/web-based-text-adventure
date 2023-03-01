@@ -1,6 +1,6 @@
 import Item from "./Item.ts";
 
-export default class NullItem extends Item {
+class NullItem extends Item {
     readonly name: string;
     readonly description: string = "null";
 
@@ -10,7 +10,10 @@ export default class NullItem extends Item {
         this.name = name;
     }
 
-    use(): void {
+    use(): Promise<boolean> {
         throw new Error("Method not implemented.");
     }
 }
+
+const null_Item = new NullItem();
+export default null_Item;

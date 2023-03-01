@@ -11,8 +11,9 @@ class Pile_of_Coins extends Item {
         this.name = name;
     }
 
-    use(): void {
+    async use(): Promise<boolean> {
         console.log("you used the pile of coins");
+        return await true;
     }
 }
 

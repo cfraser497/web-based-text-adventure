@@ -11,8 +11,9 @@ class AncientStick extends Item {
         this.name = name;
     }
 
-    async use(): Promise<void> {
+    async use(): Promise<boolean> {
         await gameHandler.setChapter("Ancient_Stick");
+        return true;
     }
 }
 

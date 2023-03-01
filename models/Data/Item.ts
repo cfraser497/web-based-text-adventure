@@ -19,7 +19,7 @@ export default abstract class Item {
         this.nextChapterWhenTaken = "null";
     }
 
-    abstract use():void;
+    abstract use(): Promise<boolean>;
 
     getName(): string {
         return this.name;
