@@ -1,7 +1,7 @@
 import Item from "../Item.ts"
 import gameHandler from "../../GameHandler.ts";
 
-export default class AncientStick extends Item {
+class AncientStick extends Item {
     readonly name: string;
     readonly description: string = "A mysterious stick";
 
@@ -15,3 +15,6 @@ export default class AncientStick extends Item {
         await gameHandler.setChapter("Ancient_Stick");
     }
 }
+
+const ancientStick: AncientStick = new AncientStick();
+export default ancientStick;

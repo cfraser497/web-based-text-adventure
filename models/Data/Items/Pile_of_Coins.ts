@@ -1,9 +1,9 @@
-import { getItemIdFromName } from "../../../utils.ts";
 import Item from "../Item.ts"
 
-export default class Pile_of_Coins extends Item {
+class Pile_of_Coins extends Item {
     readonly name: string;
     readonly description: string = "They are of an unknown currency..";
+
 
     constructor() {
         const name = "Pile of Coins";
@@ -15,3 +15,6 @@ export default class Pile_of_Coins extends Item {
         console.log("you used the pile of coins");
     }
 }
+
+const pile_of_Coins: Pile_of_Coins = new Pile_of_Coins();
+export default pile_of_Coins;

@@ -1,0 +1,7 @@
+You turn back to the watchtower, in hopes of finding Peter and Alex <br><br>
+“Peter! Alex!”, you call out again in an attempt to locate them. The blazing fire makes it difficult to hear anything, or even get close to the watchtower. You decide to traverse round the watch tower, to see if there is a different entrance that you can use. <br><br>
+There is debris littered everywhere, meaning you have to tip-toe everywhere, when suddenly you hear a scream from inside the watchtower.<br><br>
+
+#Tutorial2 Investigate the scream
+%Pile_of_Stones->Tutorial3
+%Ancient_Stick

@@ -21,14 +21,8 @@ class GameHandler {
     }
 
     
-    async setChapter(chapter: string): Promise<boolean> {
-        if (this.validOption(chapter)) {
-            this.currentChapter = await Chapter.build(chapter);
-            return true;
-        } else {
-            console.log("invalid chapter: " + chapter);
-            return false;
-        }
+    async setChapter(chapter: string): Promise<void> {
+        this.currentChapter = await Chapter.build(chapter);
     }
 
     setCurrentItem(itemStr: string): void {
@@ -38,22 +32,6 @@ class GameHandler {
         } else {
             throw new Error ("Unexpexted Item: " + itemStr);
         }
-    }
-
-    // Check if the chapter selected is a chapter that is allowed to be selected
-    // after the current chapter.
-    validOption(chapter: string): boolean {
-        const options = this.currentChapter.getOptions();
-        //Check if the chapter is an available option from the current chapter
-        for (const option of options) {
-            if (option.getValue() == chapter)
-                return true;
-        }
-        //Check if the chapter is available at any point
-        if (this.whitelistedChapters.includes(chapter))
-            return true;
-        
-        return false;
     }
 
     async addWhitelistedChapter(chapter: string): Promise<void> {
@@ -91,7 +69,7 @@ class GameHandler {
     }
 }
 
-const firstChapterName = "1";
+const firstChapterName = "start";
 const whiteistedChapters = [
     "Ancient_Stick"
 ]
